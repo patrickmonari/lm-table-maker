@@ -1,6 +1,6 @@
 # lm-table-maker
-R function to generate publication-ready figures from linear models. Exports as html file
+R functions to generate publication-ready figures from linear models, now with added customizability and effect sizes! Exports as html and PNG files
 
 # see the example R file for instructions using simulated data
 
-![image](https://user-images.githubusercontent.com/61850735/233801415-f6f9c465-d29a-4ee0-9538-c43ba670bad1.png)
+![image](https://github.com/patrickmonari/lm-table-maker/assets/61850735/00c67112-ddc7-46b6-bb1e-f4a52aa7517f)
