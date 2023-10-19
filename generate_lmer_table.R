@@ -1,19 +1,25 @@
+# Ensure required packages are loaded
+library(lme4)
+library(car)
+library(effectsize)
+library(kableExtra)
+library(webshot)
+
 generate_lmer_table <- function(data, formula_str, output_label = "lmer_table", caption_label = "Linear mixed effects model") {
   
-  # Ensure required packages are loaded
-  # You can comment the library lines if needed
-  library(lme4)
-  library(effectsize)
-  library(kableExtra)
-  library(webshot)
+  # Silly workaround to make sure formula_str updates in the global environment
+  formula_str <<- formula_str
   
   # Parse formula from string
+  formula_obj <<- as.formula(formula_str)
   formula_obj <- as.formula(formula_str)
   
   # Fit a linear mixed-effects model
+  fit <<- lm(formula_obj, data = data)
   fit <- lmer(formula_obj, data = data)
   
   # Calculate effect sizes for the model - partial omega squared
+  effect_size <<- effectsize(fit, data = data)
   effect_size <- effectsize(fit)
   
   # Obtain ANOVA table for the model
