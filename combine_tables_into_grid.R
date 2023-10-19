@@ -1,3 +1,4 @@
+# Ensure required packages are loaded
 library(cowplot)
 library(png)
 
@@ -14,7 +15,7 @@ combine_tables_into_grid <- function(png_files, output_filename = "combined_plot
   num_plots <- length(plots)
   
   # Dynamically determine base width, height, and label size based on the number of plots
-  base_width <- 14
+  base_width <- 16
   base_height_per_plot <- 2.5 # height for each plot, adjust if needed
   base_height <- base_height_per_plot * num_plots
   label_size <- 32 # adjusted so that label size decreases as the number of plots increases
