@@ -14,11 +14,39 @@ combine_tables_into_grid <- function(png_files, output_filename = "combined_plot
   # Get the number of PNG files
   num_plots <- length(plots)
   
+  
+  # Prompt the user to specify image width or use the default value of 16
+  cat("Enter the image width (or press enter to use default value of 16): ")
+  user_width <- readline()
+  if (user_width == "") {
+    width <- 16
+  } else {
+    width <- as.numeric(user_width)
+  }
+  
+  # Prompt the user to specify individual plot height or use the default value of 2.5
+  cat("Enter the plot height (or press enter to use default value of 2.5): ")
+  user_height <- readline()
+  if (user_height == "") {
+    height <- 2.5
+  } else {
+    height <- as.numeric(user_height)
+  }
+  
+  # Prompt the user to specify label size
+  cat("Enter the label size (or press enter to use default value of 32): ")
+  user_label_size <- readline()
+  if (user_label_size == "") {
+    label_size <- 32
+  } else {
+    label_size <- as.numeric(user_label_size)
+  }
+  
   # Dynamically determine base width, height, and label size based on the number of plots
-  base_width <- 16
-  base_height_per_plot <- 2.5 # height for each plot, adjust if needed
-  base_height <- base_height_per_plot * num_plots
-  label_size <- 32 # adjusted so that label size decreases as the number of plots increases
+  base_width <- width
+  base_height_per_plot <- height
+  base_height <- height * num_plots
+  label_size <- label_size
   
   # Combine the grobs into a grid
   combined_plot <- cowplot::plot_grid(
